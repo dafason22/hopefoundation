@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hope for Children Foundation | Every Child Deserves Hope</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='47' fill='%23ff6a88'/%3E%3Cpath d='M50 72c-22-13-30-22-30-34 0-9 7-15 15-15 6 0 11 3 15 8 4-5 9-8 15-8 8 0 15 6 15 15 0 12-8 21-30 34z' fill='%23fff'/%3E%3C/svg%3E">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
+:root{
+  --coral:#ff6a88;--coral2:#ff9a8b;--orange:#e67e22;--gold:#f1c40f;
+  --green:#27ae60;--blue:#3498db;--ink:#2c3e50;--muted:#6b7280;--soft:#fff7f3;
+}
+html{scroll-behavior:smooth}
+body{color:var(--ink);background:#fff;overflow-x:hidden}
+::selection{background:var(--coral);color:#fff}
+img{display:block;max-width:100%}
+
+/* ---------- PRELOADER ---------- */
+#preloader{position:fixed;inset:0;background:linear-gradient(135deg,var(--coral2),var(--coral));display:flex;flex-direction:column;justify-content:center;align-items:center;z-index:9999;transition:opacity .7s}
+#preloader .ring{width:70px;height:70px;border:5px solid rgba(255,255,255,.35);border-top-color:#fff;border-radius:50%;animation:spin 1s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+#preloader p{color:#fff;font-weight:700;margin-top:18px;letter-spacing:3px;font-size:.85rem}
+
+/* ---------- NAVBAR ---------- */
+nav{position:fixed;top:0;width:100%;padding:14px 6%;display:flex;justify-content:space-between;align-items:center;z-index:1000;background:rgba(255,255,255,.92);backdrop-filter:blur(14px);box-shadow:0 3px 18px rgba(0,0,0,.05);transition:.35s}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.brand svg{filter:drop-shadow(0 4px 8px rgba(255,106,136,.4))}
+.brand-text b{font-size:1.1rem;color:var(--ink);display:block;line-height:1.15}
+.brand-text small{font-size:.68rem;color:var(--coral);font-weight:700;letter-spacing:2.5px;text-transform:uppercase}
+nav ul{display:flex;gap:30px;list-style:none;align-items:center}
+nav ul a{text-decoration:none;color:var(--ink);font-weight:500;font-size:.93rem;position:relative;transition:.3s}
+nav ul a:not(.btn-donate)::after{content:'';position:absolute;bottom:-5px;left:0;width:0;height:2.5px;background:var(--coral);border-radius:3px;transition:.3s}
+nav ul a:not(.btn-donate):hover{color:var(--coral)}
+nav ul a:not(.btn-donate):hover::after{width:100%}
+.btn-donate{background:linear-gradient(135deg,var(--coral),var(--coral2));color:#fff!important;padding:10px 26px;border-radius:50px;font-weight:600;box-shadow:0 6px 16px rgba(255,106,136,.4);transition:.3s}
+.btn-donate:hover{transform:translateY(-3px);box-shadow:0 9px 22px rgba(255,106,136,.5)}
+#hamburger{display:none;font-size:1.5rem;background:none;border:none;cursor:pointer;color:var(--ink)}
+
+/* ---------- HERO ---------- */
+header{min-height:100vh;display:flex;align-items:center;position:relative;padding:130px 6% 80px;background:url('https://commons.wikimedia.org/wiki/Special:FilePath/School_children_of_developing_Africa.jpg?width=1600') center/cover no-repeat}
+header::before{content:'';position:absolute;inset:0;background:linear-gradient(100deg,rgba(30,20,40,.85) 15%,rgba(255,106,136,.55) 65%,rgba(230,126,34,.35))}
+.hero-inner{position:relative;z-index:2;max-width:640px;color:#fff}
+.hero-tag{display:inline-block;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.4);padding:7px 20px;border-radius:50px;font-size:.8rem;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:26px;animation:fadeUp .8s both}
+h1{font-size:clamp(2.3rem,5.5vw,3.9rem);font-weight:800;line-height:1.12;animation:fadeUp .8s .15s both}
+h1 .hl{color:var(--gold)}
+.hero-inner p{font-size:1.12rem;opacity:.92;margin:24px 0 36px;line-height:1.75;animation:fadeUp .8s .3s both}
+.hero-btns{display:flex;gap:16px;flex-wrap:wrap;animation:fadeUp .8s .45s both}
+.btn{padding:15px 34px;border-radius:50px;font-weight:600;text-decoration:none;transition:.3s;font-size:.98rem;display:inline-block;cursor:pointer;border:none}
+.btn-solid{background:linear-gradient(135deg,var(--coral),var(--coral2));color:#fff;box-shadow:0 8px 22px rgba(0,0,0,.25)}
+.btn-solid:hover{transform:translateY(-4px)}
+.btn-ghost{border:2px solid #fff;color:#fff;background:transparent}
+.btn-ghost:hover{background:#fff;color:var(--ink);transform:translateY(-4px)}
+@keyframes fadeUp{from{opacity:0;transform:translateY(35px)}to{opacity:1;transform:translateY(0)}}
+
+/* ---------- SECTIONS ---------- */
+section{padding:95px 6%}
+.sec-title{font-size:clamp(1.8rem,4vw,2.6rem);font-weight:800;text-align:center;margin-bottom:14px}
+.sec-title .hl{color:var(--coral)}
+.sec-sub{text-align:center;color:var(--muted);max-width:620px;margin:0 auto 58px;line-height:1.75}
+
+/* ---------- ABOUT ---------- */
+.about-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:64px;align-items:center;max-width:1160px;margin:0 auto}
+.about-photo{position:relative}
+.about-photo img{border-radius:26px;width:100%;height:480px;object-fit:cover;box-shadow:0 25px 55px rgba(0,0,0,.18)}
+.exp-badge{position:absolute;bottom:-24px;right:-14px;background:linear-gradient(135deg,var(--coral),var(--coral2));color:#fff;border-radius:22px;padding:22px 30px;text-align:center;box-shadow:0 15px 35px rgba(255,106,136,.4)}
+.exp-badge b{font-size:2rem;display:block}
+.exp-badge span{font-size:.82rem;opacity:.92}
+.about-text h3{font-size:1.9rem;margin-bottom:18px;line-height:1.3}
+.about-text h3 .hl{color:var(--coral)}
+.about-text p{color:var(--muted);line-height:1.85;margin-bottom:16px}
+.check-list{list-style:none;margin:22px 0 26px}
+.check-list li{display:flex;gap:12px;align-items:center;padding:9px 0;font-weight:500}
+.check-list svg{flex:none}
+
+/* ---------- PROGRAMS ---------- */
+#programs{background:var(--soft)}
+.prog-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:28px;max-width:1160px;margin:0 auto}
+.prog-card{background:#fff;border-radius:24px;overflow:hidden;box-shadow:0 8px 26px rgba(0,0,0,.07);transition:.4s}
+.prog-card:hover{transform:translateY(-12px);box-shadow:0 20px 45px rgba(0,0,0,.13)}
+.prog-card .img-wrap{height:185px;overflow:hidden}
+.prog-card img{width:100%;height:100%;object-fit:cover;transition:.6s}
+.prog-card:hover img{transform:scale(1.1)}
+.prog-body{padding:26px 26px 30px}
+.prog-body .tag{font-size:.72rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:5px 14px;border-radius:50px}
+.tag-edu{background:#e3f2ff;color:var(--blue)}.tag-food{background:#e7f8ee;color:var(--green)}
+.tag-health{background:#ffe9ec;color:var(--coral)}.tag-play{background:#fff4d6;color:var(--orange)}
+.prog-body h4{margin:14px 0 10px;font-size:1.18rem}
+.prog-body p{color:var(--muted);font-size:.92rem;line-height:1.7}
+
+/* ---------- STATS ---------- */
+#impact{background:linear-gradient(135deg,var(--coral),var(--orange));color:#fff;text-align:center;position:relative;overflow:hidden}
+#impact::before,#impact::after{content:'';position:absolute;border-radius:50%;background:rgba(255,255,255,.08)}
+#impact::before{width:340px;height:340px;top:-120px;left:-90px}
+#impact::after{width:280px;height:280px;bottom:-110px;right:-70px}
+.stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:44px;max-width:1000px;margin:0 auto;position:relative;z-index:2}
+.stat .num{font-size:3.1rem;font-weight:800}
+.stat .lbl{margin-top:6px;opacity:.94;font-weight:500}
+
+/* ---------- STORIES ---------- */
+.story-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:28px;max-width:1160px;margin:0 auto}
+.story-card{background:#fff;border-radius:24px;padding:36px;box-shadow:0 8px 26px rgba(0,0,0,.06);transition:.35s;border-top:5px solid var(--coral)}
+.story-card:hover{transform:translateY(-8px)}
+.story-card .quote{font-size:2.6rem;color:var(--coral);line-height:1;font-weight:800}
+.story-card p{color:var(--muted);font-style:italic;line-height:1.85;margin:10px 0 24px}
+.story-person{display:flex;align-items:center;gap:14px}
+.story-person .avatar{width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,var(--coral2),var(--coral));color:#fff;display:flex;justify-content:center;align-items:center;font-weight:700;font-size:1.15rem}
+.story-person b{display:block;font-size:.98rem}
+.story-person small{color:var(--muted)}
+
+/* ---------- GALLERY ---------- */
+#gallery{background:var(--soft)}
+.gal-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:20px;max-width:1160px;margin:0 auto}
+.gal-item{border-radius:20px;overflow:hidden;height:230px;position:relative;cursor:pointer}
+.gal-item img{width:100%;height:100%;object-fit:cover;transition:.55s}
+.gal-item:hover img{transform:scale(1.12)}
+.gal-item::after{content:'View';position:absolute;inset:0;background:rgba(255,106,136,.65);color:#fff;display:flex;justify-content:center;align-items:center;font-weight:700;letter-spacing:2px;opacity:0;transition:.4s;text-transform:uppercase}
+.gal-item:hover::after{opacity:1}
+
+/* ---------- DONATE ---------- */
+#donate{background:linear-gradient(135deg,#232946,#3a4a8f);color:#fff;text-align:center}
+#donate .sec-title{color:#fff}
+#donate .lead{opacity:.9;max-width:580px;margin:0 auto;line-height:1.8}
+.donate-boxes{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;margin:40px 0}
+.dbox{background:rgba(255,255,255,.08);border:2px solid rgba(255,255,255,.22);border-radius:22px;padding:26px 34px;cursor:pointer;transition:.3s;min-width:150px}
+.dbox b{font-size:1.5rem;display:block}
+.dbox span{font-size:.82rem;opacity:.8}
+.dbox:hover,.dbox.active{background:var(--gold);border-color:var(--gold);color:#232946;transform:translateY(-6px)}
+.btn-gold{background:linear-gradient(135deg,var(--gold),var(--orange));color:#232946;font-weight:700;font-size:1.08rem;box-shadow:0 10px 26px rgba(241,196,15,.35)}
+.btn-gold:hover{transform:translateY(-4px) scale(1.03)}
+.pay-note{margin-top:20px;font-size:.88rem;opacity:.7}
+.secure{display:inline-flex;align-items:center;gap:8px;margin-top:10px;font-size:.82rem;opacity:.75}
+
+/* ---------- CONTACT ---------- */
+.contact-grid{display:grid;grid-template-columns:1fr 1.15fr;gap:56px;max-width:1080px;margin:0 auto}
+.c-info h3{font-size:1.6rem;margin-bottom:8px}
+.c-info>p{color:var(--muted);line-height:1.8;margin-bottom:26px}
+.c-line{display:flex;gap:16px;align-items:flex-start;margin:20px 0}
+.c-line .ic{width:48px;height:48px;flex:none;border-radius:14px;background:#ffe9ec;display:flex;justify-content:center;align-items:center}
+.c-line b{display:block;font-size:.95rem}
+.c-line span{color:var(--muted);font-size:.92rem}
+form input,form textarea,form select{width:100%;padding:15px 18px;margin-bottom:16px;border:2px solid #eee;border-radius:14px;font-size:.95rem;font-family:inherit;transition:.3s;background:#fff;color:var(--ink)}
+form input:focus,form textarea:focus,form select:focus{outline:none;border-color:var(--coral);box-shadow:0 0 0 4px rgba(255,106,136,.12)}
+form button{width:100%}
+
+/* ---------- FOOTER ---------- */
+footer{background:#1e2a3a;color:#fff;padding:60px 6% 30px}
+.foot-grid{max-width:1160px;margin:0 auto;display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:50px}
+.foot-grid h5{font-size:1rem;margin-bottom:18px;letter-spacing:1px;text-transform:uppercase;color:var(--coral2)}
+.foot-grid p,.foot-grid a{color:#b8c4d4;font-size:.92rem;line-height:1.8;text-decoration:none;display:block;margin-bottom:8px;transition:.3s}
+.foot-grid a:hover{color:#fff;padding-left:5px}
+.copyright{text-align:center;margin-top:50px;padding-top:24px;border-top:1px solid rgba(255,255,255,.1);color:#8496ab;font-size:.82rem}
+.credit{max-width:1160px;margin:14px auto 0;font-size:.68rem;color:#5d7186;line-height:1.6}
+
+.reveal{opacity:0;transform:translateY(50px);transition:.8s}
+.reveal.show{opacity:1;transform:translateY(0)}
+
+@media(max-width:900px){
+  #hamburger{display:block}
+  nav ul{position:fixed;top:74px;right:-105%;flex-direction:column;background:#fff;width:78%;height:calc(100vh - 74px);padding:45px 0;gap:30px;transition:.45s;box-shadow:-6px 0 30px rgba(0,0,0,.08);justify-content:flex-start}
+  nav ul.open{right:0}
+  .about-grid,.contact-grid{grid-template-columns:1fr}
+  .foot-grid{grid-template-columns:1fr;gap:36px}
+  .exp-badge{right:10px;bottom:-20px;padding:16px 22px}
+}
+</style>
+</head>
+<body>
+
+<div id="preloader">
+  <div class="ring"></div>
+  <p>HOPE FOR CHILDREN</p>
+</div>
+
+<nav id="navbar">
+  <a class="brand" href="#home">
+    <svg width="46" height="46" viewBox="0 0 100 100" fill="none">
+  <defs>
+    <linearGradient id="lg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ff9a8b"/><stop offset="1" stop-color="#ff6a88"/>
+    </linearGradient>
+  </defs>
+  <circle cx="50" cy="50" r="47" fill="url(#lg)"/>
+  <path d="M50 72c-22-13-30-22-30-34 0-9 7-15 15-15 6 0 11 3 15 8 4-5 9-8 15-8 8 0 15 6 15 15 0 12-8 21-30 34z" fill="#fff"/>
+  <circle cx="50" cy="34" r="7" fill="#ff6a88"/>
+  <path d="M41 58c0-8 4-13 9-13s9 5 9 13v6H41z" fill="#ff6a88"/>
+</svg>
+    <div class="brand-text"><b>Hope for Children</b><small>Foundation</small></div>
+  </a>
+  <ul id="navLinks">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#about">About Us</a></li>
+    <li><a href="#programs">Programs</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#donate" class="btn-donate">Donate Now</a></li>
+  </ul>
+  <button id="hamburger" aria-label="Menu">☰</button>
+</nav>
+
+<header id="home">
+  <div class="hero-inner">
+    <div class="hero-tag">Non-Profit Organization • Since 2016</div>
+    <h1>Every Child Deserves<br><span class="hl">Hope, Education &amp; Love</span></h1>
+    <p>We give children the chance to live a life full of promise — through education, nutrition, healthcare and the simple joy of being a child.</p>
+    <div class="hero-btns">
+      <a href="#donate" class="btn btn-solid">Donate Today</a>
+      <a href="#programs" class="btn btn-ghost">Explore Our Programs</a>
+    </div>
+  </div>
+</header>
+
+<section id="about" class="reveal">
+  <div class="about-grid">
+    <div class="about-photo">
+      <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Children_in_a_classroom.jpg?width=1100" alt="Children learning in a classroom" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='500'%3E%3Crect width='800' height='500' fill='%23ffe3ec'/%3E%3Cpath d='M400 200c-20-35-70-35-90 0s5 65 90 115c85-50 110-80 90-115s-70-35-90 0z' fill='%23ff6a88'/%3E%3C/svg%3E'">
+      <div class="exp-badge"><b>10+</b><span>Years of Impact</span></div>
+    </div>
+    <div class="about-text">
+      <h3>Who We <span class="hl">Are</span></h3>
+      <p><b>Hope for Children Foundation</b> is a non-governmental organization dedicated to lifting children out of hardship. We believe every child — no matter where they are born — deserves to learn, to be healthy, and to dream.</p>
+      <ul class="check-list">
+        <li><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="11" fill="#27ae60"/><path d="M7 12.5l3.2 3L17 9" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Free quality education for every child</li>
+        <li><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="11" fill="#27ae60"/><path d="M7 12.5l3.2 3L17 9" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Daily nutritious meals</li>
+        <li><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="11" fill="#27ae60"/><path d="M7 12.5l3.2 3L17 9" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Healthcare and counselling services</li>
+        <li><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="11" fill="#27ae60"/><path d="M7 12.5l3.2 3L17 9" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Sports, arts and talent programs</li>
+        <li><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="11" fill="#27ae60"/><path d="M7 12.5l3.2 3L17 9" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Safe homes and nurturing communities</li>
+      </ul>
+      <p>Thanks to our donors, thousands of children have already regained their childhood. You can be part of their story too.</p>
+    </div>
+  </div>
+</section>
+
+<section id="programs" class="reveal">
+  <h2 class="sec-title">Our <span class="hl">Programs</span></h2>
+  <p class="sec-sub">Each program is a step towards a brighter future for the children we serve. Together, we turn compassion into action.</p>
+  <div class="prog-grid">
+    <div class="prog-card">
+      <div class="img-wrap"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Children_Going_to_school.jpg?width=800" alt="Children going to school" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='500'%3E%3Crect width='800' height='500' fill='%23ffe3ec'/%3E%3Cpath d='M400 200c-20-35-70-35-90 0s5 65 90 115c85-50 110-80 90-115s-70-35-90 0z' fill='%23ff6a88'/%3E%3C/svg%3E'"></div>
+      <div class="prog-body">
+        <span class="tag tag-edu">Education</span>
+        <h4>Education for All</h4>
+        <p>We build classrooms, supply learning materials and sponsor children who would otherwise miss out on school.</p>
+      </div>
+    </div>
+    <div class="prog-card">
+      <div class="img-wrap"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Food_Help_Malawi_Africa.jpeg?width=800" alt="Children receiving a nutritious meal" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='500'%3E%3Crect width='800' height='500' fill='%23ffe3ec'/%3E%3Cpath d='M400 200c-20-35-70-35-90 0s5 65 90 115c85-50 110-80 90-115s-70-35-90 0z' fill='%23ff6a88'/%3E%3C/svg%3E'"></div>
+      <div class="prog-body">
+        <span class="tag tag-food">Nutrition</span>
+        <h4>Healthy Meals</h4>
+        <p>A full meal every day keeps children strong, focused and ready to learn. No child should learn on an empty stomach.</p>
+      </div>
+    </div>
+    <div class="prog-card">
+      <div class="img-wrap"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Angolan_woman_with_children_outside_health_clinic_(5686703351).jpg?width=800" alt="Children at a health clinic" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='500'%3E%3Crect width='800' height='500' fill='%23ffe3ec'/%3E%3Cpath d='M400 200c-20-35-70-35-90 0s5 65 90 115c85-50 110-80 90-115s-70-35-90 0z' fill='%23ff6a88'/%3E%3C/svg%3E'"></div>
+      <div class="prog-body">
+        <span class="tag tag-health">Health</span>
+        <h4>Health &amp; Care</h4>
+        <p>Medical check-ups, vaccinations and emotional support — because a healthy child is a happy child.</p>
+      </div>
+    </div>
+    <div class="prog-card">
+      <div class="img-wrap"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/African_children_playing_soccer.jpg?width=800" alt="Children playing soccer" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='500'%3E%3Crect width='800' height='500' fill='%23ffe3ec'/%3E%3Cpath d='M400 200c-20-35-70-35-90 0s5 65 90 115c85-50 110-80 90-115s-70-35-90 0z' fill='%23ff6a88'/%3E%3C/svg%3E'"></div>
+      <div class="prog-body">
+        <span class="tag tag-play">Talent</span>
+        <h4>Sports &amp; Arts</h4>
+        <p>Football, music, dance and painting give children the space to play, express themselves and discover their gifts.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="impact" class="reveal">
+  <div class="stats-grid">
+    <div class="stat"><div class="num" data-target="12500">0</div><div class="lbl">Children Supported</div></div>
+    <div class="stat"><div class="num" data-target="38">0</div><div class="lbl">Classrooms Built</div></div>
+    <div class="stat"><div class="num" data-target="24">0</div><div class="lbl">Villages Reached</div></div>
+    <div class="stat"><div class="num" data-target="5000">0</div><div class="lbl">Active Donors</div></div>
+  </div>
+</section>
+
+<section id="stories" class="reveal">
+  <h2 class="sec-title">Stories of <span class="hl">Hope</span></h2>
+  <p class="sec-sub">Real voices from the families, donors and children whose lives have been touched by this work.</p>
+  <div class="story-grid">
+    <div class="story-card">
+      <div class="quote">&ldquo;</div>
+      <p>My daughter now goes to school for free and eats well every day. Hope for Children has completely changed our lives.</p>
+      <div class="story-person"><div class="avatar">N</div><div><b>Neema M.</b><small>Parent • Arusha</small></div></div>
+    </div>
+    <div class="story-card">
+      <div class="quote">&ldquo;</div>
+      <p>I have donated for six months now. Every month I receive photos and videos of smiling children — you cannot put a price on that.</p>
+      <div class="story-person"><div class="avatar">B</div><div><b>Baraka J.</b><small>Donor • Dar es Salaam</small></div></div>
+    </div>
+    <div class="story-card">
+      <div class="quote">&ldquo;</div>
+      <p>Through the arts program I discovered my talent for drawing. Today I dream of becoming a professional artist.</p>
+      <div class="story-person"><div class="avatar">R</div><div><b>Rehema, age 12</b><small>Student • Mwanza</small></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="gallery" class="reveal">
+  <h2 class="sec-title">Our <span class="hl">Gallery</span></h2>
+  <p class="sec-sub">Moments of joy, learning and hope — captured along the journey.</p>
+  <div class="gal-grid">
+    <div class="gal-item"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Kids_playing_football_in_Rwanda.jpg?width=700" alt="Children playing football" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='500'%3E%3Crect width='800' height='500' fill='%23ffe3ec'/%3E%3Cpath d='M400 200c-20-35-70-35-90 0s5 65 90 115c85-50 110-80 90-115s-70-35-90 0z' fill='%23ff6a88'/%3E%3C/svg%3E'"></div>
+    <div class="gal-item"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Children_smiling.jpg?width=700" alt="Smiling children" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='500'%3E%3Crect width='800' height='500' fill='%23ffe3ec'/%3E%3Cpath d='M400 200c-20-35-70-35-90 0s5 65 90 115c85-50 110-80 90-115s-70-35-90 0z' fill='%23ff6a88'/%3E%3C/svg%3E'"></div>
+    <div class="gal-item"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Children_playing_football_in_africa.jpg?width=700" alt="Children playing in the street" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='500'%3E%3Crect width='800' height='500' fill='%23ffe3ec'/%3E%3Cpath d='M400 200c-20-35-70-35-90 0s5 65 90 115c85-50 110-80 90-115s-70-35-90 0z' fill='%23ff6a88'/%3E%3C/svg%3E'"></div>
+    <div class="gal-item"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Kenya_class.jpg?width=700" alt="Children in class in Kenya" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='500'%3E%3Crect width='800' height='500' fill='%23ffe3ec'/%3E%3Cpath d='M400 200c-20-35-70-35-90 0s5 65 90 115c85-50 110-80 90-115s-70-35-90 0z' fill='%23ff6a88'/%3E%3C/svg%3E'"></div>
+    <div class="gal-item"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Lunch_at_school.jpg?width=700" alt="Meal time at school" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='500'%3E%3Crect width='800' height='500' fill='%23ffe3ec'/%3E%3Cpath d='M400 200c-20-35-70-35-90 0s5 65 90 115c85-50 110-80 90-115s-70-35-90 0z' fill='%23ff6a88'/%3E%3C/svg%3E'"></div>
+    <div class="gal-item"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Kids_playing_football_in_Senegal.jpg?width=700" alt="Kids playing football in Senegal" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='500'%3E%3Crect width='800' height='500' fill='%23ffe3ec'/%3E%3Cpath d='M400 200c-20-35-70-35-90 0s5 65 90 115c85-50 110-80 90-115s-70-35-90 0z' fill='%23ff6a88'/%3E%3C/svg%3E'"></div>
+  </div>
+</section>
+
+<section id="donate" class="reveal">
+  <h2 class="sec-title">Give Today, <span style="color:var(--gold)">Change a Life</span></h2>
+  <p class="lead">Every shilling counts. Just 5,000 TZS can feed a child for an entire week.</p>
+  <div class="donate-boxes">
+    <div class="dbox" data-amt="5,000 TZS"><b>15,000</b><span>Feeds a child for a week</span></div>
+    <div class="dbox active" data-amt="20,000 TZS"><b>100,000</b><span>School supplies for a term</span></div>
+    <div class="dbox" data-amt="50,000 TZS"><b>60,000</b><span>A full school uniform &amp; bag</span></div>
+    <div class="dbox" data-amt="100,000 TZS"><b>60,000</b><span>Sponsors a child for a month</span></div>
+  </div>
+  <a href="#contact" class="btn btn-gold" id="donateBtn">Donate 20,000 TZS Now</a>
+  <div class="pay-note">M-Pesa • Visa • Mastercard • Bank Transfer</div>
+  <div class="secure">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6z" stroke="#fff" stroke-width="1.6" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    100% Secure &amp; Transparent — every donation is tracked and reported
+  </div>
+</section>
+
+<section id="contact" class="reveal">
+  <h2 class="sec-title">Get in <span class="hl">Touch</span></h2>
+  <p class="sec-sub">We would love to hear from you. Reach out anytime.</p>
+  <div class="contact-grid">
+    <div class="c-info">
+      <h3>Contact Information</h3>
+      <p>Have a question, want to volunteer, or partner with us? Send us a message and our team will respond within 24 hours.</p>
+      <div class="c-line">
+        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-6.2-7-11a7 7 0 0114 0c0 4.8-7 11-7 11z" stroke="#ff6a88" stroke-width="1.8"/><circle cx="12" cy="10" r="2.6" stroke="#ff6a88" stroke-width="1.8"/></svg></div>
+        <div><b>Our Office</b><span>Morogoro Road, Dar es Salaam, Tanzania</span></div>
+      </div>
+      <div class="c-line">
+        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M5 4h4l2 5-2.5 1.5a12 12 0 005 5L15 13l5 2v4a2 2 0 01-2 2A15 15 0 013 6a2 2 0 012-2z" stroke="#ff6a88" stroke-width="1.8" stroke-linejoin="round"/></svg></div>
+        <div><b>Phone / WhatsApp</b><span>+255 686265676</span></div>
+      </div>
+      <div class="c-line">
+        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="2.5" stroke="#ff6a88" stroke-width="1.8"/><path d="M3.5 7l8.5 6 8.5-6" stroke="#ff6a88" stroke-width="1.8" stroke-linejoin="round"/></svg></div>
+        <div><b>Email</b><span>info@hopeforchildren.or.tz</span></div>
+      </div>
+      <div class="c-line">
+        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#ff6a88" stroke-width="1.8"/><path d="M12 7v5l3.5 2" stroke="#ff6a88" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+        <div><b>Working Hours</b><span>Monday – Friday: 8:00 – 17:00 EAT</span></div>
+      </div>
+    </div>
+    <form id="contactForm">
+      <input type="text" placeholder="Your full name" required>
+      <input type="email" placeholder="Your email address" required>
+      <input type="tel" placeholder="Phone number (optional)">
+      <select required>
+        <option value="">I would like to...</option>
+        <option>Make a donation</option>
+        <option>Become a volunteer</option>
+        <option>Discuss a partnership</option>
+        <option>Ask a question</option>
+      </select>
+      <textarea rows="4" placeholder="Your message..." required></textarea>
+      <button type="submit" class="btn btn-solid" id="sendBtn">Send Message</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-grid">
+    <div>
+      <a class="brand" href="#home" style="margin-bottom:16px">
+        <svg width="46" height="46" viewBox="0 0 100 100" fill="none">
+  <defs>
+    <linearGradient id="lg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ff9a8b"/><stop offset="1" stop-color="#ff6a88"/>
+    </linearGradient>
+  </defs>
+  <circle cx="50" cy="50" r="47" fill="url(#lg)"/>
+  <path d="M50 72c-22-13-30-22-30-34 0-9 7-15 15-15 6 0 11 3 15 8 4-5 9-8 15-8 8 0 15 6 15 15 0 12-8 21-30 34z" fill="#fff"/>
+  <circle cx="50" cy="34" r="7" fill="#ff6a88"/>
+  <path d="M41 58c0-8 4-13 9-13s9 5 9 13v6H41z" fill="#ff6a88"/>
+</svg>
+        <div class="brand-text"><b style="color:#fff">Hope for Children</b><small>Foundation</small></div>
+      </a>
+      <p>A registered non-profit organization working to give every child a fair start in life — through education, nutrition, healthcare and love.</p>
+    </div>
+    <div>
+      <h5>Quick Links</h5>
+      <a href="#about">About Us</a>
+      <a href="#programs">Programs</a>
+      <a href="#stories">Impact Stories</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#donate">Donate</a>
+    </div>
+    <div>
+      <h5>Contact</h5>
+      <p>Morogoro Road,<br>Dar es Salaam, Tanzania</p>
+      <p>+255686265676</p>
+      <p>hello@hopeforchildren.or.tz</p>
+    </div>
+  </div>
+  <div class="copyright">© 2026 Hope for Children Foundation. All rights reserved.</div>
+  <div class="credit">Photos: Wikimedia Commons contributors (Wiki Loves Africa / CC licenses): School children of developing Africa; Children in a classroom; Children Going to school (Jamiyu019); Food Help Malawi Africa; Angolan woman with children outside health clinic (USAID); African children playing soccer (Nokhuthula); Kids playing football in Rwanda; Children smiling; Children playing football in africa (Biggiepopa); Kenya class; Lunch at school (Freddi Ngoro); Kids playing football in Senegal (Carlos Pessoa De Melo).</div>
+</footer>
+
+<script>
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    const p = document.getElementById('preloader');
+    p.style.opacity = '0';
+    setTimeout(() => p.remove(), 700);
+  }, 700);
+});
+
+const ham = document.getElementById('hamburger');
+const navLinks = document.getElementById('navLinks');
+ham.addEventListener('click', () => navLinks.classList.toggle('open'));
+navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+const revealObs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('show'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+
+const counterObs = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting) return;
+    const num = entry.target;
+    const target = +num.dataset.target;
+    let cur = 0;
+    const step = Math.max(1, Math.ceil(target / 90));
+    const tick = () => {
+      cur += step;
+      if (cur >= target) cur = target;
+      num.textContent = cur.toLocaleString();
+      if (cur < target) requestAnimationFrame(tick);
+    };
+    tick();
+    counterObs.unobserve(num);
+  });
+}, { threshold: 0.5 });
+document.querySelectorAll('.num').forEach(n => counterObs.observe(n));
+
+const dboxes = document.querySelectorAll('.dbox');
+const donateBtn = document.getElementById('donateBtn');
+dboxes.forEach(b => b.addEventListener('click', () => {
+  dboxes.forEach(x => x.classList.remove('active'));
+  b.classList.add('active');
+  donateBtn.textContent = 'Donate ' + b.dataset.amt + ' Now';
+}));
+
+document.getElementById('contactForm').addEventListener('submit', e => {
+  e.preventDefault();
+  const btn = document.getElementById('sendBtn');
+  btn.textContent = 'Thank you! Message sent.';
+  btn.style.background = 'linear-gradient(135deg,#2ecc71,#27ae60)';
+  setTimeout(() => {
+    btn.textContent = 'Send Message';
+    btn.style.background = '';
+    e.target.reset();
+  }, 3500);
+});
+</script>
+</body>
+</html>
